@@ -1,0 +1,8 @@
+{
+  "name": "AETHER — Beyond the Horizon",
+  "description": "An interactive cinematic parallax scrolling journey through a mysterious fantasy realm, built with React, TypeScript, GSAP ScrollTrigger, and Three.js.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

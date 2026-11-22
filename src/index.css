@@ -1,0 +1,354 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, Cambria, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  :root,
+  [data-theme="fantasy"] {
+    --aether-bg: #060916;
+    --aether-accent: #e5a94c;
+    --aether-accent-bright: #ffd27d;
+    --aether-secondary: #9b7df2;
+  }
+
+  [data-theme="digital"] {
+    --aether-bg: #030713;
+    --aether-accent: #38bdf8;
+    --aether-accent-bright: #7ce8ff;
+    --aether-secondary: #a78bfa;
+  }
+
+  html {
+    background-color: #060916;
+    color: #f4efe6;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: #060916;
+    overflow-x: clip;
+    margin: 0;
+  }
+}
+
+/* Custom Cinematic Keyframes (Compositor-only: transform & opacity) */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes float-medium {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -20px, 0);
+  }
+}
+
+@keyframes cloud-drift-right {
+  0% {
+    transform: translate3d(-4%, 0, 0);
+  }
+  50% {
+    transform: translate3d(4%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-4%, 0, 0);
+  }
+}
+
+@keyframes cloud-drift-left {
+  0% {
+    transform: translate3d(4%, 0, 0);
+  }
+  50% {
+    transform: translate3d(-4%, 0, 0);
+  }
+  100% {
+    transform: translate3d(4%, 0, 0);
+  }
+}
+
+@keyframes waterfall-flow {
+  0% {
+    transform: translate3d(0, -25%, 0);
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate3d(0, 25%, 0);
+    opacity: 0.7;
+  }
+}
+
+@keyframes mist-sway {
+  0%, 100% {
+    transform: translate3d(-2%, 0, 0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate3d(2%, -6px, 0) scale(1.04);
+    opacity: 0.7;
+  }
+}
+
+@keyframes grass-sway {
+  0%, 100% {
+    transform: rotate(-1.6deg);
+  }
+  50% {
+    transform: rotate(1.8deg);
+  }
+}
+
+@keyframes bird-glide {
+  0% {
+    transform: translate3d(-60px, 8px, 0) scale(0.95);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.75;
+  }
+  85% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(140px, -28px, 0) scale(1.05);
+    opacity: 0;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse-slow {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes scroll-cue {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate3d(0, 8px, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes sun-breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes firefly-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(0.85);
+    opacity: 0.35;
+  }
+  33% {
+    transform: translate3d(16px, -20px, 0) scale(1.15);
+    opacity: 0.95;
+  }
+  66% {
+    transform: translate3d(-12px, -32px, 0) scale(0.95);
+    opacity: 0.6;
+  }
+}
+
+@keyframes crystal-bob {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0) rotate(4deg);
+  }
+}
+
+@keyframes crystal-burst {
+  0% {
+    transform: scale(0.4);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+@keyframes explorer-stride {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0) rotate(-1deg);
+  }
+  50% {
+    transform: translate3d(0, -4px, 0) rotate(1.5deg);
+  }
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 7.5s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 6s ease-in-out infinite;
+}
+
+.animate-cloud-right {
+  animation: cloud-drift-right 28s ease-in-out infinite;
+}
+
+.animate-cloud-left {
+  animation: cloud-drift-left 34s ease-in-out infinite;
+}
+
+.animate-waterfall {
+  animation: waterfall-flow 2.4s linear infinite;
+}
+
+.animate-mist {
+  animation: mist-sway 9s ease-in-out infinite;
+}
+
+.animate-grass {
+  transform-origin: bottom center;
+  animation: grass-sway 5s ease-in-out infinite;
+}
+
+.animate-bird {
+  animation: bird-glide 18s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 46s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow 34s linear infinite;
+}
+
+.animate-scroll-cue {
+  animation: scroll-cue 2.4s ease-in-out infinite;
+}
+
+.animate-sun-breathe {
+  animation: sun-breathe 8s ease-in-out infinite;
+}
+
+.animate-firefly {
+  animation: firefly-float 7s ease-in-out infinite;
+}
+
+.animate-crystal-bob {
+  animation: crystal-bob 4s ease-in-out infinite;
+}
+
+.animate-crystal-burst {
+  animation: crystal-burst 0.65s ease-out forwards;
+}
+
+.animate-explorer-stride {
+  animation: explorer-stride 2.6s ease-in-out infinite;
+}
+
+.animate-modal-enter {
+  animation: modal-enter 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-toast-enter {
+  animation: toast-enter 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Balance display headlines to prevent orphan trailing words */
+.headline-balance {
+  text-wrap: balance;
+}
+
+/* Accessible user toggle to skip animations */
+.skip-animations *,
+.skip-animations *::before,
+.skip-animations *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Respect prefers-reduced-motion across all animations */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-cloud-right,
+  .animate-cloud-left,
+  .animate-waterfall,
+  .animate-mist,
+  .animate-grass,
+  .animate-bird,
+  .animate-spin-slow,
+  .animate-spin-reverse-slow,
+  .animate-scroll-cue,
+  .animate-sun-breathe,
+  .animate-firefly,
+  .animate-crystal-bob,
+  .animate-explorer-stride,
+  .animate-modal-enter,
+  .animate-toast-enter {
+    animation: none !important;
+  }
+}
